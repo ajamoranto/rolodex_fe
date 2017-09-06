@@ -1,13 +1,36 @@
 /**
- * StudentController
+ * CardController
  *
- * @description :: Server-side logic for managing students
+ * @description :: Server-side logic for managing cards
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/student"
+var endpoint = "http://localhost:1337/card";
+const demoData = [
+  {
+    "id": 1,
+    "firstName": "AJ",
+    "lastName": "Amoranto"
+  },
+  {
+    "id": 2,
+    "firstName": "Lyndsay",
+    "lastName": "Buban"
+  },
+  {
+    "id": 3,
+    "firstName": "Nick",
+    "lastName": "Poole"
+  },
+  {
+    "id": 4,
+    "firstName": "Jean",
+    "lastName": "Stam"
+  }
+  ];
+
 
 module.exports = {
 
@@ -45,11 +68,11 @@ module.exports = {
    */
   read: function (req, res) {
 
-    client.get(endpoint, function (data, response) {
-        return res.view('read', {students: data});
-    }).on('error', function (err) {
-        return res.view('read', {error: { message: "There was an error getting the students"}});
-    });
+    // client.get(endpoint, function (data, response) {
+        return res.view('read', {cards: demoData});
+    // }).on('error', function (err) {
+    //     return res.view('read', {error: { message: "There was an error getting the cards"}});
+    // });
 
   },
 
@@ -62,9 +85,9 @@ module.exports = {
     if(req.method != "POST"){
 
       client.get(endpoint, function (data, response) {
-        return res.view('update', {students: data});
+        return res.view('update', {cards: data});
       }).on('error', function (err) {
-          return res.view('update', {error: { message: "There was an error getting the students"}});
+          return res.view('update', {error: { message: "There was an error getting the cards"}});
       });
 
     }else{
@@ -97,9 +120,9 @@ module.exports = {
     if(req.method != "POST"){
 
       client.get(endpoint, function (data, response) {
-        return res.view('delete', {students: data});
+        return res.view('delete', {cards: data});
       }).on('error', function (err) {
-          return res.view('delete', {error: { message: "There was an error getting the students"}});
+          return res.view('delete', {error: { message: "There was an error getting the cards"}});
       });
 
     }else{

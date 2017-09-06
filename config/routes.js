@@ -42,9 +42,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/create':'StudentController.create',
-  '/'      :'StudentController.read',
-  '/update':'StudentController.update',
-  '/delete':'StudentController.delete'
+  '/create':'CardController.create',
+  '/'      :'CardController.read',
+  '/update':'CardController.update',
+  '/delete':'CardController.delete'
 
 };

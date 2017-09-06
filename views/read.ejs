@@ -17,15 +17,34 @@
     </tr>
   </thead>
   <tbody>
-  <% if(typeof students != "undefined" && students.length > 0){ %>
-    <% students.forEach(function(student){ %>
+  <% if(typeof cards != "undefined" && cards.length > 0){ %>
+    <% cards.forEach(function(card){ %>
       <tr>
-        <td><%= student.student_id %></td>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.start_date %></td>
+        <td><%= card.id %></td>
+        <td><%= card.firstName %></td>
+        <td><%= card.lastName %></td>
+        <td><a href="#" class="btn btn-info">Card</a></td>
       </tr>
     <% }) %>
   <% } %>
   </tbody>
 </table>
+
+<div class="modal fade" id="cardWindow">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">card.firstName card.lastName</h4>
+      </div>
+      <div class="modal-body">
+        <p>All card info goes here...</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Edit?</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete?</button>
+      </div>
+    </div>
+  </div>
+</div>

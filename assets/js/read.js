@@ -44,6 +44,10 @@
       "scrollX": true
    });
 
+   $('.btn').click(function() {
+   $('#cardWindow').modal('show');
+});
+
    })
 
  })();
