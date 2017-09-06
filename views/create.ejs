@@ -1,0 +1,121 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Add Student</a></li>
+</ol>
+
+<br/>
+<%- partial ('partials/statusmessage.ejs') %>
+
+
+<form action="/create" method="POST" class="form-horizontal" id="addCard">
+  <!-- Form Name -->
+  <legend>New Card</legend>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="firstName">First Name</label>
+    <div class="col-md-4">
+    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="lastName">Last Name</label>
+    <div class="col-md-4">
+    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="title">Title</label>
+    <div class="col-md-4">
+    <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="company">Company</label>
+    <div class="col-md-4">
+    <input id="company" name="company" type="text" placeholder="Company" class="form-control input-md">
+
+    </div>
+  </div>
+
+  <!-- Select Basic -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="type">Type</label>
+    <div class="col-md-2">
+      <select id="type" name="type" class="form-control">
+        <option value="1">Home</option>
+        <option value="2">Work</option>
+        <option value="3">Vacation</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="street">Street</label>
+    <div class="col-md-6">
+    <input id="street" name="street" type="text" placeholder="Street" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+<!--TODO: make these display inline-->
+<div>
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="city">City</label>
+    <div class="col-md-2">
+    <input id="city" name="city" type="text" placeholder="City" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="state">State</label>
+    <div class="col-md-2">
+    <input id="state" name="state" type="text" placeholder="State" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="zipCode">Zip</label>
+    <div class="col-md-2">
+    <input id="zipCode" name="zipCode" type="text" placeholder="Zip" class="form-control input-md" required="">
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- Text input-->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="phoneNumber1">Phone #</label>
+    <div class="col-md-4">
+    <input id="phoneNumber1" name="phoneNumber1" type="text" placeholder="(xxx) xxx-xxxx" class="form-control input-md" required="">
+
+    </div>
+  </div>
+
+  <!-- Button (Double) -->
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="create"></label>
+    <div class="col-md-8">
+      <button id="create" name="create" class="btn btn-primary">Create</button>
+      <button id="cancel" name="cancel" class="btn btn-inverse">Cancel</button>
+    </div>
+  </div>
+
+  </fieldset>
+  </form>
