@@ -28,6 +28,43 @@
 
   $(function() {
 
+    $('#create').click(e => {
+      e.preventDefault()
+      let cardObj = {
+        firstName: $('#firstName').val(),
+        lastName: $('#lastName').val(),
+        title: $('#title').val(),
+        addresses: [
+          { type: $('option').val(), street: $('#street').val(), city: $('#city').val(), state: $('#state').val(), zipCode: $('#zipCode').val()
+         }
+       ],
+        phoneNumbers: [
+          { type: $('#phoneType').val(), number: $('#phoneNumber').val()}
+        ]
+      }
+      let payload = {
+        method: 'POST',
+        data: JSON.stringify(cardObj),
+        contentType: 'application/json'
+      }
+      // let cardObj = {
+      //   '\"firstName\"': $('#firstName').val(),
+      //   '\"lastName\"': $('#lastName').val(),
+      //   '\"title\"': $('#title').val()
+      // }
+      $.ajax("https://fierce-forest-94846.herokuapp.com/cards", payload, function(response) {console.log(response)})
+      console.log(cardObj)
+    })
+
+    // $("#create").click(function(e) {
+    //   e.preventDefault()
+    //   // $.post("https://fierce-forest-94846.herokuapp.com/cards", $("#addCard").val(), function(data){
+    //   console.log($("#addCard").serialize())
+    //   // }) // closes $.post
+    // }) //closes .click
+
+
+
     $("#addCard").validate({
       errorClass: "text-danger",
       rules: {
@@ -45,39 +82,39 @@
           required: true,
           maxlength: 100
           // type: 'string'
-        },
-        company: {
-          maxlength: 100
-          // type: 'string'
-        },
-        street: {
-          required: true,
-          maxlength: 100
-          // type: 'string'
-        },
-        city: {
-          required: true,
-          maxlength: 50
-          // type: 'string'
-        },
-        state: {
-          required: true,
-          maxlength: 2,
-          minlength: 2
-          // type: 'string'
-        },
-        zipCode: {
-          required: true,
-          minlength: 5,
-          maxlength: 5
-          // type: 'integer'
-        },
-        phoneNumber: {
-          required: true,
-          maxlength: 10,
-          minlength: 10
-          // type: 'integer'
         }
+        // company: {
+        //   maxlength: 100
+        //   // type: 'string'
+        // },
+        // street: {
+        //   required: true,
+        //   maxlength: 100
+        //   // type: 'string'
+        // },
+        // city: {
+        //   required: true,
+        //   maxlength: 50
+        //   // type: 'string'
+        // },
+        // state: {
+        //   required: true,
+        //   maxlength: 2,
+        //   minlength: 2
+        //   // type: 'string'
+        // },
+        // zipCode: {
+        //   required: true,
+        //   minlength: 5,
+        //   maxlength: 5
+        //   // type: 'integer'
+        // },
+        // phoneNumber: {
+        //   required: true,
+        //   maxlength: 10,
+        //   minlength: 10
+        //   // type: 'integer'
+        // }
       },
       messages: {
         firstName: {
@@ -90,28 +127,28 @@
         },
         title: {
           required: jQuery.validator.format("This field is required.")
-        },
-        street: {
-          required: jQuery.validator.format("This field is required.")
-        },
-        city: {
-          required: jQuery.validator.format("This field is required.")
-        },
-        state: {
-          required: jQuery.validator.format("This field is required."),
-          minlength: jQuery.validator.format("Please use the two letter state abbreviation."),
-          maxlength: jQuery.validator.format("Please use the two letter state abbreviation.")
-        },
-        zipCode: {
-          required: jQuery.validator.format("This field is required."),
-          minlength: jQuery.validator.format("Field must contain 5 digits"),
-          maxlength: jQuery.validator.format("Field must contain 5 digits")
-        },
-        phoneNumber: {
-          required: jQuery.validator.format("This field is required."),
-          minlength: jQuery.validator.format("Field must contain 10 digits."),
-          maxlength: jQuery.validator.format("Field must contain 10 digits.")
         }
+        // street: {
+        //   required: jQuery.validator.format("This field is required.")
+        // },
+        // city: {
+        //   required: jQuery.validator.format("This field is required.")
+        // },
+        // state: {
+        //   required: jQuery.validator.format("This field is required."),
+        //   minlength: jQuery.validator.format("Please use the two letter state abbreviation."),
+        //   maxlength: jQuery.validator.format("Please use the two letter state abbreviation.")
+        // },
+        // zipCode: {
+        //   required: jQuery.validator.format("This field is required."),
+        //   minlength: jQuery.validator.format("Field must contain 5 digits"),
+        //   maxlength: jQuery.validator.format("Field must contain 5 digits")
+        // },
+        // phoneNumber: {
+        //   required: jQuery.validator.format("This field is required."),
+        //   minlength: jQuery.validator.format("Field must contain 10 digits."),
+        //   maxlength: jQuery.validator.format("Field must contain 10 digits.")
+        // }
       }
     })
   })

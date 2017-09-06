@@ -7,7 +7,7 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/card";
+var endpoint = "https://fierce-forest-94846.herokuapp.com/cards";
 const demoData = [
   {
     "id": 1,
@@ -68,11 +68,11 @@ module.exports = {
    */
   read: function (req, res) {
 
-    // client.get(endpoint, function (data, response) {
-        return res.view('read', {cards: demoData});
-    // }).on('error', function (err) {
-    //     return res.view('read', {error: { message: "There was an error getting the cards"}});
-    // });
+    client.get(endpoint, function (data, response) {
+        return res.view('read', {cards: data});
+    }).on('error', function (err) {
+        return res.view('read', {error: { message: "There was an error getting the cards"}});
+    });
 
   },
 
