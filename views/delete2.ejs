@@ -1,0 +1,33 @@
+<ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li class="active">Delete Card</a></li>
+</ol>
+
+<br/>
+
+<%- partial ('partials/statusmessage.ejs') %>
+
+<h2>Delete Card</h2>
+
+<div style="text-align: center; padding-top:50px">
+  <form action="#" method="">
+    <div class="form-group">
+      <label for="student_id">SELECT A CARD TO UPDATE</label><br/>
+      <select id="student_id" name="student_id">
+      <% if(typeof cards != "undefined" && cards.length > 0){ %>
+        <% cards.forEach(function(card){ %>
+          <option value="<%= card.id %>">
+            <%= card.lastName + ", " +  card.firstName %>
+          </option>
+        <% }) %>
+      <% } %>
+      </select>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">
+        DELETE CARD
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
+    </div>
+  </form>
+</div>

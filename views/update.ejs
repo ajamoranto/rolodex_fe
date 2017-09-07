@@ -1,15 +1,15 @@
 <ol class="breadcrumb">
-    <li><a href="/">Home</a></li>
-    <li class="active">Edit Card</a></li>
+  <li><a href="/">Home</a></li>
+  <li class="active">UPDATE ADDRESS</a>
+  </li>
 </ol>
-
 <br/>
 <%- partial ('partials/statusmessage.ejs') %>
-
-<form action="#" method="">
-  <div class="form-group">
-    <label for="card_id">SELECT A CARD TO UPDATE</label><br/>
-    <select id="card_id" name="card_id">
+  <form action="#" method="">
+    <div class="form-group">
+      <label for="card_id">SELECT A CARD TO UPDATE</label><br/>
+      <select id="card_id" name="card_id">
+        <option></option>
     <% if(typeof cards != "undefined" && cards.length > 0){ %>
       <% cards.forEach(function(card){ %>
         <option value="<%= card.id %>">
@@ -18,115 +18,94 @@
       <% }) %>
     <% } %>
     </select>
-  </div>
-</form>
-
-<form method="POST" action="/create" class="form-horizontal" id="addCard">
-  <!-- Form Name -->
-  <legend>Edit Card</legend>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="firstName">First Name</label>
-    <div class="col-md-4">
-    <input id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
-
     </div>
-  </div>
+  </form>
+  <h2>Update Address</h2>
+  <form method="POST" action="/update" class="form-horizontal" id="AddAddress">
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="firstName">First Name</label>
+      <div class="col-md-4">
+        <input disabled id="firstName" name="firstName" type="text" placeholder="First Name" class="form-control input-md" required="">
+      </div>
+    </div>
+    <!-- Text input -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="lastName">Last Name</label>
+      <div class="col-md-4">
+        <input disabled id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="title">Title</label>
+      <div class="col-md-4">
+        <input disabled id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="company">Company</label>
+      <div class="col-md-4">
+        <input disabled id="company" name="company" type="text" placeholder="Company" class="form-control input-md">
+      </div>
+    </div>
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="type">Address Type</label>
+      <div class="col-md-2">
+        <select id="workType" name="type" class="form-control">
+          <option></option>
+            <option>Home</option>
+            <option>Work</option>
+            <option>Vacation</option>
+          </select>
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="street">Street</label>
+      <div class="col-md-6">
+        <input id="street" name="street" type="text" placeholder="Street" class="form-control input-md" required="">
+      </div>
+    </div>
+    <!--TODO: make these display inline-->
+    <div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="city">City</label>
+        <div class="col-md-2">
+          <input id="city" name="city" type="text" placeholder="City" class="form-control input-md" required="">
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="state">State</label>
+        <div class="col-md-2">
+          <input id="state" name="state" type="text" placeholder="State" class="form-control input-md" required="">
+        </div>
+      </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="zipCode">Zip</label>
+        <div class="col-md-2">
+          <input id="zipCode" name="zipCode" type="text" placeholder="Zip" class="form-control input-md" required="">
+        </div>
+      </div>
+    </div>
+    <!-- Text input-->
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="Update"></label>
+      <div class="col-md-8">
+        <button id="create" type="submit" name="update" class="btn btn-primary">Add</button>
+        <button id="cancel" name="cancel" class="btn btn-inverse">Cancel</button>
 
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="lastName">Last Name</label>
-    <div class="col-md-4">
-    <input id="lastName" name="lastName" type="text" placeholder="Last Name" class="form-control input-md" required="">
-
+        <div class="form-group">
+          <button type="submit" class="btn btn-danger">
+            DELETE ADDRESS
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="title">Title</label>
-    <div class="col-md-4">
-    <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
-
-    </div>
-  </div>
-
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="company">Company</label>
-    <div class="col-md-4">
-    <input id="company" name="company" type="text" placeholder="Company" class="form-control input-md">
-    </div>
-  </div>
-  <!-- Select Basic -->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="type">Address Type</label>
-    <div class="col-md-2">
-      <select id="workType" name="type" class="form-control">
-        <option value="home">Home</option>
-        <option value="work">Work</option>
-        <option value="vacation">Vacation</option>
-      </select>
-    </div>
-  </div>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="street">Street</label>
-    <div class="col-md-6">
-    <input id="street" name="street" type="text" placeholder="Street" class="form-control input-md" required="">
-    </div>
-  </div>
-<!--TODO: make these display inline-->
-<div>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="city">City</label>
-    <div class="col-md-2">
-    <input id="city" name="city" type="text" placeholder="City" class="form-control input-md" required="">
-    </div>
-  </div>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="state">State</label>
-    <div class="col-md-2">
-    <input id="state" name="state" type="text" placeholder="State" class="form-control input-md" required="">
-    </div>
-  </div>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="zipCode">Zip</label>
-    <div class="col-md-2">
-    <input id="zipCode" name="zipCode" type="text" placeholder="Zip" class="form-control input-md" required="">
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="type">Phone Type</label>
-  <div class="col-md-2">
-    <select id="phoneType" name="type" class="form-control">
-      <option value="home">Home</option>
-      <option value="work">Work</option>
-    </select>
-  </div>
-</div>
-  <!-- Text input-->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="phoneNumber">Phone #</label>
-    <div class="col-md-4">
-    <input id="phoneNumber" name="phoneNumber" type="text" placeholder="(xxx) xxx-xxxx" class="form-control input-md" required="">
-    </div>
-  </div>
-
-  <!-- Button (Double) -->
-  <div class="form-group">
-    <label class="col-md-4 control-label" for="create"></label>
-    <div class="col-md-8">
-      <button id="create" type="submit" name="create" class="btn btn-primary">Create</button>
-      <button id="cancel" name="cancel" class="btn btn-inverse">Cancel</button>
-    </div>
-  </div>
-
-
   </form>

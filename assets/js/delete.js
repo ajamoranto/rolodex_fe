@@ -27,24 +27,145 @@
  *
  */
 
-(function() {
+ (function() {
 
-  $(function() {
+   $(function() {
+     let selected;
+     const emptyAddress = {
+       type: '',
+       street: '',
+       city: '',
+       state: '',
+       zipCode: ''
+     }
 
-    //code goes here
-    $("#student_id").addClass("selectpicker").attr("data-live-search", "true");
-    $("option").addClass("glyphicon glyphicon-user");
-    $("select").attr("data-header", "Select a card");
+     //code goes here
 
-    $('.selectpicker').selectpicker({
-      title: "Select a card",
-      style: 'btn-info',
-      size: 4
-      // tickIcon: "glyphicon glyphicon-user",
-      // showTick: true
-    });
+     $("#addAddress :input").prop("disabled", true);
+
+     $("#card_id").on("change", function() {
+       //enable input fields after we fill out the form
+       $("#addAddress :input").prop("disabled", false);
 
 
-  })
+       selected = $(this).find("option:selected").val();
 
-})();
+
+
+       //store current student in variable for when we submit the form
+       //we need this to know what student we are updating
+       //variable declared on line 5
+
+
+       $.get("http://fierce-forest-94846.herokuapp.com/cards/" + selected, function(card) {
+
+         // Curtis thinks this is great. You don't have to, also.
+         // $('#firstName').val(card.firstName);
+
+         //loop over the student i got back from the api
+         $.each(card, function(key, val) {
+           if (val.pop) {
+             return;
+           }
+
+           //find the input field that matches the name of the key
+           let el = $('[name="' + key + '"]');
+           //find the type of field that we selected
+           let type = el.attr('type');
+
+           //based on the type choose how we set the value
+           switch (type) {
+             case 'checkbox':
+               el.attr('checked', 'checked');
+               break;
+             case 'radio':
+               el.filter('[value="' + val + '"]').attr('checked', 'checked');
+               break;
+             default:
+               el.val(val);
+           }
+         });
+
+
+         $.each((card.addresses.length && card.addresses[0]) || emptyAddress, function(key, val) {
+           if (val.pop) {
+             return;
+           }
+
+           //find the input field that matches the name of the key
+           let el = $('[name="' + key + '"]');
+           //find the type of field that we selected
+           let type = el.attr('type');
+
+           //based on the type choose how we set the value
+           switch (type) {
+             case 'checkbox':
+               el.attr('checked', 'checked');
+               break;
+             case 'radio':
+               el.filter('[value="' + val + '"]').attr('checked', 'checked');
+               break;
+             default:
+               el.val(val);
+           }
+         });
+       })
+
+     })
+
+
+     $("#create").on("submit", function(e){
+
+       //prevents default behavior of form submitting
+       e.preventDefault()
+
+       $.ajax({
+         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/0",
+         // data: $("#addAddress").serialize(),
+         method: "DELETE",
+         success: function(data){
+
+           //reload student table on success
+
+
+           //disable form fields again
+           $("#addAddress :input").prop("disabled", true);
+
+           //reset form back to empty fields
+           $("#addAddress")[0].reset()
+
+         //   console.log("http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/2")
+         }
+       })
+     })
+
+     // $("#addCard").validate({
+     //   errorClass: "text-danger",
+     //   rules: {
+     //     first_name: {
+     //       required: true,
+     //       minlength: 2
+     //     },
+     //     last_name: {
+     //       required: true,
+     //       minlength: 2
+     //     },
+     //     start_date: {
+     //       dateISO: true
+     //     }
+     //   },
+     //   messages: {
+     //     first_name: {
+     //       minlength: "At least 2 characters required!"
+     //     },
+     //     last_name: {
+     //       minlength: "At least 2 characters required!"
+     //     },
+     //     start_date: {
+     //       dateISO: "yyyy-mm-dd"
+     //     }
+     //   }
+
+     });
+
+ })();
