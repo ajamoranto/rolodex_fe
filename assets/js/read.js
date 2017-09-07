@@ -33,6 +33,9 @@
  (function() {
 
    $(function() {
+     var cardID;
+     var firstName;
+     var lastName;
 
      //code goes here
      $('table').DataTable({
@@ -47,6 +50,17 @@
 
    $('.btn').click(function() {
      $('#cardWindow').modal('show');
+     cardID = $(this).parents('tr').data('id');
+     firstName = $('.card-first-name', $(this).parents('tr')).html();
+     lastName = $('.card-last-name', $(this).parents('tr')).html();
+     
+     $("#blah").html('')
+     $("#blah").append(cardID)
+     $("#blah").append(firstName)
+     $("#blah").append(lastName)
    })
+
+
+
 
  })();
