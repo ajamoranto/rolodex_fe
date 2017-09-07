@@ -30,23 +30,23 @@
  *
  */
 
-(function() {
+ (function() {
 
-  $(function() {
+   $(function() {
 
-    //code goes here
-    $('table').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-      ],
-      colReorder: true,
-      "scrollX": true
-    });
-  });
+     //code goes here
+     $('table').DataTable({
+       dom: 'Bfrtip',
+       buttons: [
+         'copy', 'csv', 'excel', 'pdf', 'print'
+       ],
+       colReorder: true,
+       "scrollX": true
+     });
+   });
 
-  $('.btn').click(function() {
-    $('#modalWindow').modal('show');
-  });
+   $('.btn').click(function() {
+     $('#cardWindow').modal('show');
+   })
 
-})();
+ })();

@@ -49,7 +49,7 @@
 
     $("#updateStudentForm :input").prop("disabled", true);
 
-    $("#student_id").on("change", function() {
+    $("#card_id").on("change", function() {
       //enable input fields after we fill out the form
       $("#updateStudentForm :input").prop("disabled", false);
 

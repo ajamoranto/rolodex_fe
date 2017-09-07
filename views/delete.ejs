@@ -1,23 +1,23 @@
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
-    <li class="active">Delete Employee</a></li>
+    <li class="active">Delete Card</a></li>
 </ol>
 
 <br/>
 
 <%- partial ('partials/statusmessage.ejs') %>
 
-<h2>Delete Student</h2>
+<h2>Delete Card</h2>
 
 <div style="text-align: center; padding-top:50px">
-  <form action="/delete" method="POST">
+  <form action="#" method="">
     <div class="form-group">
-      <label for="student_id">SELECT A STUDENT TO DELETE</label><br/>
+      <label for="student_id">SELECT A CARD TO UPDATE</label><br/>
       <select id="student_id" name="student_id">
-      <% if(typeof students != "undefined" && students.length > 0){ %>
-        <% students.forEach(function(student){ %>
-          <option value="<%= student.student_id %>">
-            <%= student.last_name + ", " +  student.first_name %>
+      <% if(typeof cards != "undefined" && cards.length > 0){ %>
+        <% cards.forEach(function(card){ %>
+          <option value="<%= card.id %>">
+            <%= card.lastName + ", " +  card.firstName %>
           </option>
         <% }) %>
       <% } %>
@@ -25,7 +25,7 @@
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-danger">
-        DELETE STUDENT
+        DELETE CARD
         <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
       </button>
     </div>

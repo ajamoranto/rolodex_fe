@@ -7,7 +7,7 @@
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "https://fierce-forest-94846.herokuapp.com/cards";
+var endpoint = "https://fierce-forest-94846.herokuapp.com/cards/";
 const demoData = [
   {
     "id": 1,

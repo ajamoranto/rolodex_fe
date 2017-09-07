@@ -34,10 +34,10 @@
     //code goes here
     $("#student_id").addClass("selectpicker").attr("data-live-search", "true");
     $("option").addClass("glyphicon glyphicon-user");
-    $("select").attr("data-header", "Select a student");
+    $("select").attr("data-header", "Select a card");
 
     $('.selectpicker').selectpicker({
-      title: "Select a student",
+      title: "Select a card",
       style: 'btn-info',
       size: 4
       // tickIcon: "glyphicon glyphicon-user",
