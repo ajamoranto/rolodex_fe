@@ -52,7 +52,7 @@
       //   '\"lastName\"': $('#lastName').val(),
       //   '\"title\"': $('#title').val()
       // }
-      $.ajax("https://fierce-forest-94846.herokuapp.com/cards", payload, function(response) {console.log(response)})
+      $.ajax("/create", payload, function(response) {console.log(response)})
       console.log(cardObj)
     })
 
