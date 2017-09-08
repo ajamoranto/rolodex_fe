@@ -7,8 +7,8 @@
 <%- partial ('partials/statusmessage.ejs') %>
   <form action="#" method="">
     <div class="form-group">
-      <label for="card_id">SELECT A CARD TO ADD AN ADDRESS TO</label><br/>
-      <select id="card_id" name="card_id">
+      <label for="card_id_for_update">SELECT A CARD TO ADD AN ADDRESS TO</label><br/>
+      <select id="card_id_for_update" name="card_id_for_update">
         <option></option>
     <% if(typeof cards != "undefined" && cards.length > 0){ %>
       <% cards.forEach(function(card){ %>
@@ -21,7 +21,7 @@
     </div>
   </form>
   <h2>Add Address</h2>
-  <form method="POST" action="/update" class="form-horizontal" id="AddAddress">
+  <form method="POST" action="/update" class="form-horizontal" id="addAddress">
     <div class="form-group">
       <label class="col-md-4 control-label" for="firstName">First Name</label>
       <div class="col-md-4">
@@ -97,7 +97,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="Update"></label>
       <div class="col-md-8">
-        <button id="create" type="submit" name="update" class="btn btn-primary">Add</button>
+        <button id="add" type="submit" name="update" class="btn btn-primary">Add</button>
         <button id="cancel" name="cancel" class="btn btn-inverse">Cancel</button>
 
         <!-- <div class="form-group">
