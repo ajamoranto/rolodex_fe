@@ -75,24 +75,31 @@
 
              $("#blah").append(`
                    <div class="dialog">
-                    <p>ID: ${details.id}</p>
-                    <p>Company: ${details.company}</p>`)
+                    <p><b>ID:</b> ${details.id}</p>
+                    <p><b>Company</b>: ${details.company}</p>
+                    <BR><BR>`)
 
             for (let i = 0; i < details.addresses.length; i++){
                   $("#blah2").append(`
-                     <p>Address Type: ${details.addresses[i].type}</p>
-                    <p>Address: ${details.addresses[i].street}</p>
-                    <p>City: ${details.addresses[i].city}</p>
-                    <p>State: ${details.addresses[i].state}</p>
-                    <p>Zip: ${details.addresses[i].zipCode}</p>
+                     <p><b>Address Type:</b> ${details.addresses[i].type}</p>
+                    <p><b>Address:</b> ${details.addresses[i].street}</p>
+                    <p><b>City:</b> ${details.addresses[i].city}</p>
+                    <p><b>State:</b> ${details.addresses[i].state}</p>
+                    <p><b>Zip:</b> ${details.addresses[i].zipCode}</p>
+
+                    <button type="button" class="btn btn-danger">Delete</button>
+                    <BR><BR><BR><BR>
                     </div>
                     `)
                  }
 
                  for (let i = 0; i < details.phoneNumbers.length; i++){
                        $("#blah3").append(`
-                          <p>Phone Type: ${details.phoneNumbers[i].type}</p>
-                         <p>Phone: ${details.phoneNumbers[i].number}</p>
+                          <p><b>Phone Type:</b> ${details.phoneNumbers[i].type}</p>
+                         <p><b>Phone:</b> ${details.phoneNumbers[i].number}</p>
+
+                         <button type="button" class="btn btn-danger">Delete</button>
+                         <BR><BR><BR><BR>
                          </div>
                          `)
                       }
