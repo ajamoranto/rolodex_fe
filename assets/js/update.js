@@ -74,9 +74,9 @@
         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/",
         data: JSON.stringify(cardObj),
         contentType: 'application/json',
-        type: "POST" //callback
-      }).then(() => {
-
+        type: "POST", //callback
+    //  }).then(() => {
+        success: function(data){
                   //reload student table on success
 
                   //disable form fields again
@@ -85,6 +85,7 @@
                   //reset form back to empty fields
                   $("#addAddress")[0].reset()
 
+        }
       }) //ajax
     }) //on submit
 
