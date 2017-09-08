@@ -7,8 +7,8 @@
 <%- partial ('partials/statusmessage.ejs') %>
   <form action="#" method="">
     <div class="form-group">
-      <label for="card_id">SELECT A CARD TO ADD AN ADDRESS TO</label><br/>
-      <select id="card_id" name="card_id">
+      <label for="card_id_for_update">SELECT A CARD TO ADD AN ADDRESS TO</label><br/>
+      <select id="card_id_for_update" name="card_id_for_update">
         <option></option>
     <% if(typeof cards != "undefined" && cards.length > 0){ %>
       <% cards.forEach(function(card){ %>

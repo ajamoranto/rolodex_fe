@@ -13,7 +13,7 @@
 
     $("#addAddress :input").prop("disabled", true);
 
-    $("#card_id").on("change", function() {
+    $("#card_id_for_update").on("change", function() {
       //enable input fields after we fill out the form
       $("#addAddress :input").prop("disabled", false);
 
@@ -51,47 +51,42 @@
             default:
               el.val(val);
           }
-        });
-      })
+        }) //each
+      }) //get
 
-    })
+    })//on change
 
 
-    $("#addAddress").on("submit", function(e) {
+    $("#add").click(function(e) {
 
       //prevents default behavior of form submitting
       e.preventDefault()
       let cardObj = {
-        id: selected,
-        addresses: [{
           type: $('#addressType').val(),
           street: $('#street').val(),
           city: $('#city').val(),
           state: $('#state').val(),
-          zipCode: $('#zipCode').val()
-        }]
+          zipCode: parseInt($('#zipCode').val())
       }
       console.log(cardObj)
 
       $.ajax({
         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/",
-        data: cardObj,
+        data: JSON.stringify(cardObj),
         contentType: 'application/json',
-        method: "POST",
-        success: function(data) {
+        type: "POST" //callback
+      }).then(() => {
 
-          //reload student table on success
+                  //reload student table on success
 
+                  //disable form fields again
+                  $("#addAddress :input").prop("disabled", true);
 
-          //disable form fields again
-          $("#addAddress :input").prop("disabled", true);
+                  //reset form back to empty fields
+                  $("#addAddress")[0].reset()
 
-          //reset form back to empty fields
-          $("#addAddress")[0].reset()
-
-        }
-      })
-    })
+      }) //ajax
+    }) //on submit
 
     // $("#addCard").validate({
     //   errorClass: "text-danger",
