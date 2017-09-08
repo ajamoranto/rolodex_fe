@@ -10,20 +10,24 @@
 <table class="table table-striped table-bordered" id="cardTable" style="width:100%">
   <thead>
     <tr>
-      <th>ID</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>View Card</th>
+      <th style="display: none">Title</th>
+      <th style="display: none">Company</th>
+      <th style="display: none">Street</th>
     </tr>
   </thead>
   <tbody>
   <% if(typeof cards != "undefined" && cards.length > 0){ %>
     <% cards.forEach(function(card){ %>
-      <tr>
-        <td><%= card.id %></td>
-        <td><%= card.firstName %></td>
-        <td><%= card.lastName %></td>
+      <tr data-id="<%= card.id %>">
+        <td class="card-first-name"><%= card.firstName %></td>
+        <td class="card-last-name"><%= card.lastName %></td>
         <td><a href="#" class="btn btn-info">Card</a></td>
+        <td class="card-title" style="display: none"><%= card.title %></td>
+        <td class="card-company" style="display: none"><%= card.company %></td>
+        <td class="card-street" style="display: none"><%= card.street %></td>
       </tr>
     <% }) %>
   <% } %>
@@ -38,7 +42,7 @@
         <h4 class="modal-title">NAME GOES HERE</h4>
       </div>
       <div class="modal-body">
-        <p>All card info goes here...</p>
+        <p id="blah">Company/Title here</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

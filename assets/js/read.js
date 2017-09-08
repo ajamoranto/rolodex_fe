@@ -33,6 +33,18 @@
  (function() {
 
    $(function() {
+     var cardID;
+     var firstName;
+     var lastName;
+     var title;
+     var company;
+     var addresses;
+     var street;
+     var city;
+     var state;
+     var zipCode;
+     var number;
+     var card;
 
      //code goes here
      $('table').DataTable({
@@ -47,6 +59,67 @@
 
    $('.btn').click(function() {
      $('#cardWindow').modal('show');
+     cardID = $(this).parents('tr').data('id');
+     firstName = $('.card-first-name', $(this).parents('tr')).html();
+     lastName = $('.card-last-name', $(this).parents('tr')).html();
+   //   title = $('.card-title', $(this).parents('tr')).html();
+   //   company = $('.card-company', $(this).parents('tr')).html();
+   //   street = $('.card-street', $(this).parents('tr')).html();
+
+     $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID, data => {
+             details = data
+
+            $("#blah").html('')
+            $(".modal-title").html('')
+            $(".modal-title").append(firstName +" "+ lastName)
+
+             $("#blah").append(`
+                   <div class="dialog">
+                    <p>ID: ${details.id}</p>
+                    <p>Company: ${details.company}</p>
+                    <p>Address: ${details.addresses[0].street}</p>
+                    <p>City: ${details.addresses[0].city}</p>
+                    <p>State: ${details.addresses[0].state}</p>
+                    <p>Zip: ${details.addresses[0].zipCode}</p>
+                    </div>
+                    `)
+            //  $(".phoneDialog").append(`
+            //        <p>${details.phoneNumbers[0].type}: ${details.phoneNumbers[0].phoneNumber}</p>
+            //        `)
+             //  let cardAddress=addresses[0].id
+           })
+
+         //   $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID + "/addresses/"  data => {
+         //          addresses = data
+           //
+         //         $("#blah2").html('')
+           //
+         //          $("#blah2").append(`
+         //                <div class="dialog">
+         //                 <p>Street: ${addresses.street}</p>
+           //
+         //                 </div>
+         //                 `)
+                 //  $(".phoneDialog").append(`
+                 //        <p>${details.phoneNumbers[0].type}: ${details.phoneNumbers[0].phoneNumber}</p>
+                 //        `)
+                  //  let cardAddress=addresses[0].id
+               //  })
+
+
+
+
+   //   $("#blah").append("ID: "+cardID)
+   //   $("#blah").append('<BR><BR>')
+   //   $("#blah").append(title)
+   //   $("#blah").append('<BR>')
+   //   $("#blah").append(company)
+   //   $("#blah").append('<BR>')
+   //   $("#blah").append("Address: " + addresses.street)
+   //   $("#blah").append('<BR>')
    })
+
+
+
 
  })();
