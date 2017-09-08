@@ -1,0 +1,57 @@
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">ADD PHONE</a>
+  </li>
+</ol>
+<br/>
+<%- partial ('partials/statusmessage.ejs') %>
+  <form action="#" method="">
+    <div class="form-group">
+      <label for="card_id_for_update">SELECT A CARD TO ADD A NUMBER TO</label><br/>
+      <select id="card_id_for_update" name="card_id_for_update">
+        <option></option>
+    <% if(typeof cards != "undefined" && cards.length > 0){ %>
+      <% cards.forEach(function(card){ %>
+        <option value="<%= card.id %>">
+          <%= card.lastName + ", " +  card.firstName %>
+        </option>
+      <% }) %>
+    <% } %>
+    </select>
+    </div>
+  </form>
+  <h2>Add Phone Number</h2>
+  <form method="POST" action="/update" class="form-horizontal" id="addPhone">
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="type">Phone Type</label>
+    <div class="col-md-2">
+      <select id="phoneType" name="type" class="form-control">
+        <option value="home">Home</option>
+        <option value="work">Work</option>
+      </select>
+    </div>
+  </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="phoneNumber">Phone #</label>
+      <div class="col-md-4">
+      <input id="phoneNumber" name="phoneNumber" type="text" placeholder="(xxx) xxx-xxxx" class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <!-- Button (Double) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="Update"></label>
+      <div class="col-md-8">
+        <button id="addPhoneBtn" type="submit" name="update" class="btn btn-primary">Add</button>
+        <button id="cancel" name="cancel" class="btn btn-inverse">Cancel</button>
+
+        <!-- <div class="form-group">
+          <button type="submit" class="btn btn-danger">
+            DELETE ADDRESS
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </div> -->
+      </div>
+    </div>
+  </form>

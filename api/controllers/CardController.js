@@ -112,6 +112,38 @@ module.exports = {
     }
   },
 
+  updatePhone: function (req, res) {
+
+    if(req.method != "POST"){
+
+      client.get(endpoint, function (data, response) {
+        return res.view('updatePhone', {cards: data});
+      }).on('error', function (err) {
+          return res.view('updatePhone', {error: { message: "There was an error getting the cards"}});
+      });
+
+    }else{
+
+      var args = {
+          data: req.body,
+          headers: { "Content-Type": "application/json" }
+      };
+
+      client.put(endpoint + "/" + req.body.id, args, function (data, response) {
+
+        if(response.statusCode != "200"){
+            req.addFlash("error", data.message);
+            return res.redirect('/updatePhone');
+        }
+
+        req.addFlash("success", "Record updated successfully");
+        return res.redirect('/updatePhone');
+
+      })
+
+    }
+  },
+
   /**
    * `StudentController.delete()`
    */

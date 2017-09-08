@@ -45,6 +45,7 @@ module.exports.routes = {
   '/create':'CardController.create',
   '/'      :'CardController.read',
   '/update':'CardController.update',
-  '/delete':'CardController.delete'
+  '/delete':'CardController.delete',
+  '/updatePhone': 'CardController.updatePhone'
 
 };
