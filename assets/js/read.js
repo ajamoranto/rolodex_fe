@@ -62,9 +62,9 @@
      cardID = $(this).parents('tr').data('id');
      firstName = $('.card-first-name', $(this).parents('tr')).html();
      lastName = $('.card-last-name', $(this).parents('tr')).html();
-     title = $('.card-title', $(this).parents('tr')).html();
-     company = $('.card-company', $(this).parents('tr')).html();
-     street = $('.card-street', $(this).parents('tr')).html();
+   //   title = $('.card-title', $(this).parents('tr')).html();
+   //   company = $('.card-company', $(this).parents('tr')).html();
+   //   street = $('.card-street', $(this).parents('tr')).html();
 
      $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID, data => {
              details = data
@@ -77,8 +77,10 @@
                    <div class="dialog">
                     <p>ID: ${details.id}</p>
                     <p>Company: ${details.company}</p>
-                    <p>Address: ${details.addresses.street}</p>
-                    <p>${details.company}</p>
+                    <p>Address: ${details.addresses[0].street}</p>
+                    <p>City: ${details.addresses[0].city}</p>
+                    <p>State: ${details.addresses[0].state}</p>
+                    <p>Zip: ${details.addresses[0].zipCode}</p>
                     </div>
                     `)
             //  $(".phoneDialog").append(`
@@ -86,6 +88,23 @@
             //        `)
              //  let cardAddress=addresses[0].id
            })
+
+         //   $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID + "/addresses/"  data => {
+         //          addresses = data
+           //
+         //         $("#blah2").html('')
+           //
+         //          $("#blah2").append(`
+         //                <div class="dialog">
+         //                 <p>Street: ${addresses.street}</p>
+           //
+         //                 </div>
+         //                 `)
+                 //  $(".phoneDialog").append(`
+                 //        <p>${details.phoneNumbers[0].type}: ${details.phoneNumbers[0].phoneNumber}</p>
+                 //        `)
+                  //  let cardAddress=addresses[0].id
+               //  })
 
 
 
