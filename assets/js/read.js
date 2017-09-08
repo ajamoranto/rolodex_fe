@@ -57,6 +57,8 @@
      });
    });
 
+
+
    $('.view-card').click(function() {
      $('#cardWindow').modal('show');
      cardID = $(this).parents('tr').data('id');
@@ -102,7 +104,7 @@
                           <p><b>Phone Type:</b> ${details.phoneNumbers[i].type}</p>
                          <p><b>Phone:</b> ${details.phoneNumbers[i].number}</p>
 
-                         <button type="button" class="btn btn-danger delete-phone">Delete</button>
+                         <button data-delete-phone-id="${details.phoneNumbers[i].id}" type="button" class="btn btn-danger delete-phone">Delete</button>
                          <BR><BR><BR><BR>
                          </div>
                          `)
@@ -127,7 +129,20 @@
            contentType: 'application/json',
            type: "DELETE" //callback
          })
-         .done(data => renderModal(data))
+         .done(data => renderModal())
+         .fail()
+         console.log("button clicked")
+         window.location.reload();
+      })
+
+      $(document).on("click", "[data-delete-phone-id]", function(e){
+            //what happens when delete is clicked
+         $.ajax({
+           url: `http://fierce-forest-94846.herokuapp.com/cards/${details.id}/phone/${$(this).data('deletePhoneId')}`,
+           contentType: 'application/json',
+           type: "DELETE" //callback
+         })
+         .done(data => renderModal())
          .fail()
          console.log("button clicked")
          window.location.reload();
