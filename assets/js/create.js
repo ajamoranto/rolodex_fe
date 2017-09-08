@@ -35,7 +35,7 @@
         lastName: $('#lastName').val(),
         title: $('#title').val(),
         addresses: [
-          { type: $('option').val(), street: $('#street').val(), city: $('#city').val(), state: $('#state').val(), zipCode: $('#zipCode').val()
+          { type: $('#addressType').val(), street: $('#street').val(), city: $('#city').val(), state: $('#state').val(), zipCode: $('#zipCode').val()
          }
        ],
         phoneNumbers: [
