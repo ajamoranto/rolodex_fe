@@ -52,7 +52,7 @@
        zipCode: ''
      }
 
-     //code goes here
+     ///GITHUB TEST
 
      $("#addAddress :input").prop("disabled", true);
 
@@ -100,28 +100,28 @@
          });
 
 
-         $.each((card.addresses.length && card.addresses[0]) || emptyAddress, function(key, val) {
-           if (val.pop) {
-             return;
-           }
-
-           //find the input field that matches the name of the key
-           let el = $('[name="' + key + '"]');
-           //find the type of field that we selected
-           let type = el.attr('type');
-
-           //based on the type choose how we set the value
-           switch (type) {
-             case 'checkbox':
-               el.attr('checked', 'checked');
-               break;
-             case 'radio':
-               el.filter('[value="' + val + '"]').attr('checked', 'checked');
-               break;
-             default:
-               el.val(val);
-           }
-         });
+        //  $.each((card.addresses.length && card.addresses[0]) || emptyAddress, function(key, val) {
+        //    if (val.pop) {
+        //      return;
+        //    }
+         //
+        //    //find the input field that matches the name of the key
+        //    let el = $('[name="' + key + '"]');
+        //    //find the type of field that we selected
+        //    let type = el.attr('type');
+         //
+        //    //based on the type choose how we set the value
+        //    switch (type) {
+        //      case 'checkbox':
+        //        el.attr('checked', 'checked');
+        //        break;
+        //      case 'radio':
+        //        el.filter('[value="' + val + '"]').attr('checked', 'checked');
+        //        break;
+        //      default:
+        //        el.val(val);
+        //    }
+        //  });
        })
 
      })
@@ -135,7 +135,7 @@
        $.ajax({
          url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/0",
          // data: $("#addAddress").serialize(),
-         method: "DELETE",
+         method: "PUT",
          success: function(data){
 
            //reload student table on success
