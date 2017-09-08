@@ -74,12 +74,15 @@
              details = data
 
             $("#blah").html('')
+            $("#blah2").html('')
+            $("#blah3").html('')
             $(".modal-title").html('')
             $(".modal-title").append(firstName +" "+ lastName)
 
              $("#blah").append(`
                    <div class="dialog">
                     <p><b>ID:</b> ${details.id}</p>
+                    <p><b>TITLE:</b> ${details.title}</p>
                     <p><b>Company</b>: ${details.company}</p>
                     <BR><BR>`)
 

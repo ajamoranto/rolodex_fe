@@ -55,6 +55,7 @@
       // }
       $.ajax("/create", payload, function(response) {console.log(response)})
       console.log(cardObj)
+      
     })
 
     // $("#create").click(function(e) {
