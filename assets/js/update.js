@@ -133,7 +133,7 @@
        e.preventDefault()
 
        $.ajax({
-         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/0",
+         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/",
          // data: $("#addAddress").serialize(),
          method: "PUT",
          success: function(data){

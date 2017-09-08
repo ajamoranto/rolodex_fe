@@ -57,7 +57,7 @@
      });
    });
 
-   $('.btn').click(function() {
+   $('.view-card').click(function() {
      $('#cardWindow').modal('show');
      cardID = $(this).parents('tr').data('id');
      firstName = $('.card-first-name', $(this).parents('tr')).html();
@@ -76,13 +76,26 @@
              $("#blah").append(`
                    <div class="dialog">
                     <p>ID: ${details.id}</p>
-                    <p>Company: ${details.company}</p>
-                    <p>Address: ${details.addresses[0].street}</p>
-                    <p>City: ${details.addresses[0].city}</p>
-                    <p>State: ${details.addresses[0].state}</p>
-                    <p>Zip: ${details.addresses[0].zipCode}</p>
+                    <p>Company: ${details.company}</p>`)
+
+            for (let i = 0; i < details.addresses.length; i++){
+                  $("#blah2").append(`
+                     <p>Address Type: ${details.addresses[i].type}</p>
+                    <p>Address: ${details.addresses[i].street}</p>
+                    <p>City: ${details.addresses[i].city}</p>
+                    <p>State: ${details.addresses[i].state}</p>
+                    <p>Zip: ${details.addresses[i].zipCode}</p>
                     </div>
                     `)
+                 }
+
+                 for (let i = 0; i < details.phoneNumbers.length; i++){
+                       $("#blah3").append(`
+                          <p>Phone Type: ${details.phoneNumbers[i].type}</p>
+                         <p>Phone: ${details.phoneNumbers[i].number}</p>
+                         </div>
+                         `)
+                      }
             //  $(".phoneDialog").append(`
             //        <p>${details.phoneNumbers[0].type}: ${details.phoneNumbers[0].phoneNumber}</p>
             //        `)
