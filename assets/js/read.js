@@ -66,6 +66,8 @@
    //   company = $('.card-company', $(this).parents('tr')).html();
    //   street = $('.card-street', $(this).parents('tr')).html();
 
+   function renderModal(){
+
      $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID, data => {
              details = data
 
@@ -81,13 +83,14 @@
 
             for (let i = 0; i < details.addresses.length; i++){
                   $("#blah2").append(`
+                     <div id="${details.addresses[i].id}">
                      <p><b>Address Type:</b> ${details.addresses[i].type}</p>
                     <p><b>Address:</b> ${details.addresses[i].street}</p>
                     <p><b>City:</b> ${details.addresses[i].city}</p>
                     <p><b>State:</b> ${details.addresses[i].state}</p>
                     <p><b>Zip:</b> ${details.addresses[i].zipCode}</p>
 
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <button data-delete-address-id="${details.addresses[i].id}" type="button" class="btn btn-danger delete-address">Delete</button>
                     <BR><BR><BR><BR>
                     </div>
                     `)
@@ -95,19 +98,42 @@
 
                  for (let i = 0; i < details.phoneNumbers.length; i++){
                        $("#blah3").append(`
+                          <div>
                           <p><b>Phone Type:</b> ${details.phoneNumbers[i].type}</p>
                          <p><b>Phone:</b> ${details.phoneNumbers[i].number}</p>
 
-                         <button type="button" class="btn btn-danger">Delete</button>
+                         <button type="button" class="btn btn-danger delete-phone">Delete</button>
                          <BR><BR><BR><BR>
                          </div>
                          `)
                       }
+                  // $(this).on("click", "delete-phone", function(e){
+                  //          //what happens when delete is clicked
+                  //
+                  // })
             //  $(".phoneDialog").append(`
             //        <p>${details.phoneNumbers[0].type}: ${details.phoneNumbers[0].phoneNumber}</p>
             //        `)
              //  let cardAddress=addresses[0].id
            })
+        }
+        renderModal();
+
+
+      $(document).on("click", "[data-delete-address-id]", function(e){
+            //what happens when delete is clicked
+         $.ajax({
+           url: `http://fierce-forest-94846.herokuapp.com/cards/${details.id}/address/${$(this).data('deleteAddressId')}`,
+           contentType: 'application/json',
+           type: "DELETE" //callback
+         })
+         .done(data => renderModal(data))
+         .fail()
+         console.log("button clicked")
+         window.location.reload();
+      })
+
+
 
          //   $.get("https://fierce-forest-94846.herokuapp.com/cards/" + cardID + "/addresses/"  data => {
          //          addresses = data
