@@ -53,11 +53,8 @@
       //   '\"lastName\"': $('#lastName').val(),
       //   '\"title\"': $('#title').val()
       // }
-      $.ajax("/create", payload)
-        .fail(err => console.error(err))
-        .done(() => document.querySelector('#addCard').reset(););
+      $.ajax("/create", payload, function(response) {console.log(response)})
       console.log(cardObj)
-      
     })
 
     // $("#create").click(function(e) {
