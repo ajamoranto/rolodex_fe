@@ -55,7 +55,7 @@
       // }
       $.ajax("/create", payload)
         .fail(err => console.error(err))
-        .done(() => document.querySelector('#addCard').reset(););
+        .done(() => document.querySelector('#addCard').reset());
       console.log(cardObj)
     })
 
