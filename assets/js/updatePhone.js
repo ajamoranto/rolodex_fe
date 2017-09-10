@@ -23,11 +23,11 @@
     });
 
 
-    $("#addPhone :input").prop("disabled", true);
+    $(".phoneForm :input").prop("disabled", true);
 
     $("#card_id_for_update").on("change", function() {
       //enable input fields after we fill out the form
-      $("#addPhone :input").prop("disabled", false);
+      $(".phoneForm :input").prop("disabled", false);
 
 
       selected = $(this).val();

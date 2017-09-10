@@ -23,11 +23,11 @@
     });
 
 
-    $("#addAddress :input").prop("disabled", true);
+    $(".addressForm :input").prop("disabled", true);
 
     $("#card_id_for_update").on("change", function() {
       //enable input fields after we fill out the form
-      $("#addAddress :input").prop("disabled", false);
+      $(".addressForm :input").prop("disabled", false);
 
 
       selected = $(this).val();
