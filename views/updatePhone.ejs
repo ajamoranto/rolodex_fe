@@ -6,8 +6,8 @@
 <br/>
 <%- partial ('partials/statusmessage.ejs') %>
   <form action="#" method="">
-    <div class="form-group">
-      <label for="card_id_for_update">SELECT A CARD TO ADD A NUMBER TO</label><br/>
+    <div class="form-group" id="selectTitle2">
+      <label for="card_id_for_update">SELECT A CARD TO ADD A NUMBER TO:</label><br/>
       <select id="card_id_for_update" name="card_id_for_update">
         <option></option>
     <% if(typeof cards != "undefined" && cards.length > 0){ %>
@@ -19,8 +19,9 @@
     <% } %>
     </select>
     </div>
+    <h2>Add Phone Number</h2>
   </form>
-  <h2>Add Phone Number</h2>
+
   <form method="POST" action="/update" class="form-horizontal" id="addPhone">
       <div class="form-group">
         <label class="col-md-4 control-label" for="firstName">First Name</label>
