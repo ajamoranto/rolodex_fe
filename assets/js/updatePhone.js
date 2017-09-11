@@ -2,13 +2,6 @@
 
   $(function() {
     let selected;
-    //  const emptyAddress = {
-    //    type: '',
-    //    street: '',
-    //    city: '',
-    //    state: '',
-    //    zipCode: ''
-    //  }
 
     $("#card_id_for_update").addClass("selectpicker").attr("data-live-search", "true");
     // $("option").addClass("glyphicon glyphicon-user");
@@ -96,34 +89,6 @@
 
       }) //ajax
     }) //on submit
-
-    // $("#addCard").validate({
-    //   errorClass: "text-danger",
-    //   rules: {
-    //     first_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     last_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     start_date: {
-    //       dateISO: true
-    //     }
-    //   },
-    //   messages: {
-    //     first_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     last_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     start_date: {
-    //       dateISO: "yyyy-mm-dd"
-    //     }
-    //   }
-
   });
 
 })();

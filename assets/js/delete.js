@@ -1,32 +1,3 @@
-/**
- * Use bootstrap-select to enhance the functionality of dropdown on this page.
- *
- *
- * Here's what this you will need to do:
- *
- * 1. Inlclude the following DataTables css in layout.ejs
- *    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/css/bootstrap-select.min.css">
- *
- * 2. Include the following bootstrap-select JavaScript in layout.ejs
- *    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.11.2/js/bootstrap-select.min.js"></script>
- *
- * 3. Using the bootstrap-selct plugin render dropdown on the page
- *
- * 4. Use the live search functionality to make the dropdown searchable
- *
- * 5. Add the user glyphicons next to each student in the list
- *
- * 7. Add a menu header to the dropdown
- *
- * 8. Customize further with anything you find intersting
- *
- * Here's the documentation you need:
- * https://silviomoreto.github.io/bootstrap-select/
- * https://silviomoreto.github.io/bootstrap-select/examples/
- * http://getbootstrap.com/components/#glyphicons
- *
- */
-
 (function() {
 
   $(function() {
@@ -39,7 +10,6 @@
       zipCode: ''
     }
 
-    //code goes here
 
     $("#addAddress :input").prop("disabled", true);
 
@@ -47,14 +17,8 @@
       //enable input fields after we fill out the form
       $("#addAddress :input").prop("disabled", false);
 
-
+      //Define selected as the value of the button you select in the dropdown.
       selected = $(this).find("option:selected").val();
-
-
-
-      //store current student in variable for when we submit the form
-      //we need this to know what student we are updating
-      //variable declared on line 5
 
 
       $.get("http://fierce-forest-94846.herokuapp.com/cards/" + selected, function(card) {
@@ -62,7 +26,7 @@
         // Curtis thinks this is great. You don't have to, also.
         // $('#firstName').val(card.firstName);
 
-        //loop over the student i got back from the api
+        //loop over the card we got back from the API
         $.each(card, function(key, val) {
           if (val.pop) {
             return;
@@ -86,7 +50,7 @@
           }
         });
 
-
+        //If a card exists, populate the associated addresses or, if there is an empty address, do nothing.
         $.each((card.addresses.length && card.addresses[0] && card.addresses[0]) || emptyAddress, function(key, val) {
           if (val.pop) {
             return;
@@ -107,11 +71,10 @@
               break;
             default:
               el.val(val);
-          }
-        });
-      })
-
-    })
+          } //closes switch
+        }); //closes $.each
+      }) //closes $.get function
+    }) //closes JQuery function
 
 
     $("#create").on("submit", function(e) {
@@ -121,51 +84,17 @@
 
       $.ajax({
         url: "http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/0",
-        // data: $("#addAddress").serialize(),
         method: "DELETE",
         success: function(data) {
-
-          //reload student table on success
-
-
+          //reload card table on success
           //disable form fields again
           $("#addAddress :input").prop("disabled", true);
 
           //reset form back to empty fields
           $("#addAddress")[0].reset()
+        } //closes success function
+      }) //closes .ajax request
+    }) //closes submit function
+  }); //closes Jquery function
 
-          //   console.log("http://fierce-forest-94846.herokuapp.com/cards/" + selected + "/address/2")
-        }
-      })
-    })
-
-    // $("#addCard").validate({
-    //   errorClass: "text-danger",
-    //   rules: {
-    //     first_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     last_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     start_date: {
-    //       dateISO: true
-    //     }
-    //   },
-    //   messages: {
-    //     first_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     last_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     start_date: {
-    //       dateISO: "yyyy-mm-dd"
-    //     }
-    //   }
-
-  });
-
-})();
+})(); //closes self-invoking function

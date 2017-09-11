@@ -2,18 +2,11 @@
 
   $(function() {
     let selected;
-    //  const emptyAddress = {
-    //    type: '',
-    //    street: '',
-    //    city: '',
-    //    state: '',
-    //    zipCode: ''
-    //  }
 
     $("#card_id_for_update").addClass("selectpicker").attr("data-live-search", "true");
-    // $("option").addClass("glyphicon glyphicon-user");
-    $("select").attr("data-header", "Select a card");
 
+    $("select").attr("data-header", "Select a card");
+    //bootstrap code for dropdown
     $('.selectpicker').selectpicker({
       title: "Select a card",
       style: 'btn-info',
@@ -22,18 +15,19 @@
       showTick: true
     });
 
-
+    //Disable the form fields until a user selects a card to add an address to from the dropdown
     $(".addressForm :input").prop("disabled", true);
 
     $("#card_id_for_update").on("change", function() {
       //enable input fields after we fill out the form
       $(".addressForm :input").prop("disabled", false);
 
-
+      //define "selected" as the value of the input that you click on.
       selected = $(this).val();
+
       console.log('selected: ' + selected)
 
-
+      //use a $.get request to call the backend url and add the selected value.
       $.get("http://fierce-forest-94846.herokuapp.com/cards/" + selected, function(card) {
 
         console.log("card: " + JSON.stringify(card))
@@ -41,7 +35,7 @@
         // Curtis thinks this is great. You don't have to, also.
         // $('#firstName').val(card.firstName);
 
-        //loop over the student i got back from the api
+        //loop over the card we got back from the API
         $.each(card, function(key, val) {
           if (val.pop) {
             return;
@@ -65,7 +59,6 @@
           }
         }) //each
       }) //get
-
     })//on change
 
 
@@ -87,46 +80,17 @@
         data: JSON.stringify(cardObj),
         contentType: 'application/json',
         type: "POST", //callback
-    //  }).then(() => {
         success: function(data){
-                  //reload student table on success
+                  //reload card table on success
 
                   //disable form fields again
                   $("#addAddress :input").prop("disabled", true);
 
                   //reset form back to empty fields
                   $("#addAddress")[0].reset()
-
         }
       }) //ajax
     }) //on submit
-
-    // $("#addCard").validate({
-    //   errorClass: "text-danger",
-    //   rules: {
-    //     first_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     last_name: {
-    //       required: true,
-    //       minlength: 2
-    //     },
-    //     start_date: {
-    //       dateISO: true
-    //     }
-    //   },
-    //   messages: {
-    //     first_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     last_name: {
-    //       minlength: "At least 2 characters required!"
-    //     },
-    //     start_date: {
-    //       dateISO: "yyyy-mm-dd"
-    //     }
-    //   }
 
   });
 
